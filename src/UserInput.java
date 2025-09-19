@@ -31,8 +31,27 @@ public class UserInput {
         return 0;
     }
 
+    public int showResult(){
+        int num = 0;
+        System.out.print("Select what do you want: sum (1), average(2), rating(3)");
+        if (scanner.hasNextInt()) {
+            num = scanner.nextInt();
+            if( num >= 1 && num <= 3) {
+                return num;
+            } else {
+                System.out.print("Enter the incorrect number. Please try again. (1 - 3)");
+                scanner.next();
+            }
+        } else {
+            System.out.print("Enter the incorrect number. Please try again. (1 - 3)");
+            scanner.next();
+        }
+        return num;
+    }
+
+
     public boolean isContinue() {
-        System.out.print("Are you continuing? Yes/no");
+        System.out.print("Are you continuing? Yes/no: -> ");
         if (scanner.hasNext()){
             String choice = scanner.next().toLowerCase();
 
