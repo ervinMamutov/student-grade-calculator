@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
-        App app = new App();
         UserInput scannner = new UserInput();
+        App app = new App(scannner);
 
         app.run();
 

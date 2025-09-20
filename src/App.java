@@ -1,21 +1,30 @@
 public class App {
-    public static void run() {
-        UserInput input = new UserInput();
-        int[] subjectMarks;
+    private final UserInput input;
+
+    public App(UserInput input) {
+        this.input = input;
+    }
+    public void run() {
+
+        int numberOfSubject = input.numberOfSubjects();
+        int[] theArrayOfMarks = new int[numberOfSubject];
         boolean isContinue;
-
-
         do {
-            int numberOfSubject = input.numberOfSubjects();
-            GetResult result = new GetResult(numberOfSubject);
-            subjectMarks = result.setValue();
+            // GetResult result = new GetResult(numberOfSubject);
+            for (int i = 0; i < numberOfSubject; i++) {
 
-            Calculate calculate = new Calculate(subjectMarks);
+                System.out.print("Enter the grade for the " + (i + 1) + " subject: -> ");
 
-            char raiting = calculate.total();
-            System.out.println(raiting);
+                int mark = input.setMark();
+                theArrayOfMarks[i] = mark;
+            }
 
+            Calculate calculate = new Calculate(theArrayOfMarks);
+            char rating = calculate.total();
+            System.out.println(rating);
             isContinue = input.isContinue();
         } while (isContinue);
+
+        input.scannerClose();
     }
 }

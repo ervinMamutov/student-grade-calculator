@@ -8,66 +8,52 @@ public class UserInput {
     }
 
     public int numberOfSubjects(){
-
         System.out.print(("Enter number of subject: -> "));
-
+        int number = 0;
         if (scanner.hasNextInt()) {
-            return scanner.nextInt();
+            number = scanner.nextInt();
         } else {
-            System.out.println("Enter the incorrect number. Pleae tre again");
+            System.out.println("Enter the incorrect number. Please tre again");
             scanner.next();
-            return 0;
         }
+        return number;
     }
 
-    public int setMark() {
-        System.out.print(" ");
+
+public int setMark() {
+    System.out.print(" ");
+    int mark = 0;
+    while (true) {
         if (scanner.hasNextInt()) {
-            return scanner.nextInt();
+            mark = scanner.nextInt();
+            break;
         } else {
             System.out.print("Enter the invalid mark. Please try again");
             scanner.next();
         }
-        return 0;
     }
+    return mark;
+}
 
-    public int showResult(){
-        int num = 0;
-        System.out.print("Select what do you want: sum (1), average(2), rating(3)");
-        if (scanner.hasNextInt()) {
-            num = scanner.nextInt();
-            if( num >= 1 && num <= 3) {
-                return num;
-            } else {
-                System.out.print("Enter the incorrect number. Please try again. (1 - 3)");
-                scanner.next();
+
+public boolean isContinue() {
+    System.out.print("Are you continuing? Yes/no: -> ");
+    if (scanner.hasNext()){
+        String choice = scanner.next().toLowerCase();
+
+        return switch (choice) {
+            case "y" -> true;
+            case "n" -> false;
+            default -> {
+                System.out.println("Invalid answer assuming 'no'");
+                yield false;
             }
-        } else {
-            System.out.print("Enter the incorrect number. Please try again. (1 - 3)");
-            scanner.next();
-        }
-        return num;
+        };
     }
+    return false;
+}
 
-
-    public boolean isContinue() {
-        System.out.print("Are you continuing? Yes/no: -> ");
-        if (scanner.hasNext()){
-            String choice = scanner.next().toLowerCase();
-
-            return switch (choice) {
-                case "y" -> true;
-                case "n" -> false;
-                default -> {
-                    System.out.println("Invalid answer assuming 'no'");
-                    yield false;
-                }
-            };
-        }
-        return false;
-    }
-
-    public void scannerClose(){
-        scanner.close();
-    }
+public void scannerClose(){
+    scanner.close();
+}
 }
