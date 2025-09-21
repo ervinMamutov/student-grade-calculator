@@ -4,7 +4,7 @@ public class Calculate {
         this.theArrayOfMarks = theArrayOfMarks;
     }
 
-    public char total(){
+    public String total(){
         int sum = 0;
 
         for (int mark : theArrayOfMarks) {
@@ -12,11 +12,13 @@ public class Calculate {
         }
 
         int average = sum / theArrayOfMarks.length;
+        char rang = 'S';
+        if (average >= 80) rang = 'A';
+        if (average >= 60 && average < 80) rang = 'B';
+        if (average >= 40 && average < 60) rang = 'C';
+        if (average > 0 && average < 40) rang = 'D';
 
-        if (average >= 80) return 'A';
-        if (average >= 60 && average < 80) return 'B';
-        if (average >= 40 && average < 60) return 'C';
-        if (average < 40) return 'D';
-        return 'S';
+
+        return "Your total marks is " + sum + " you average is " + average + " your raiting " + rang + "!";
     }
 }

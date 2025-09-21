@@ -1,10 +1,11 @@
 public class Main {
     public static void main(String[] args) {
-        UserInput scannner = new UserInput();
-        App app = new App(scannner);
+        UserInput scanner = new UserInput();
+        App app = new App(scanner);
 
         app.run();
 
-        scannner.scannerClose();
+        scanner.scannerClose();
     }
+
 }
