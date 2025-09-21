@@ -13,12 +13,14 @@ public class Calculate {
 
         int average = sum / theArrayOfMarks.length;
         char rang = 'S';
-        if (average >= 80) rang = 'A';
-        if (average >= 60 && average < 80) rang = 'B';
-        if (average >= 40 && average < 60) rang = 'C';
-        if (average > 0 && average < 40) rang = 'D';
 
-
-        return "Your total marks is " + sum + " you average is " + average + " your raiting " + rang + "!";
+        switch (average/10) {
+            case 8, 9, 10 -> rang ='A';
+            case 6, 7 -> rang = 'B';
+            case 4, 5 -> rang = 'C';
+            case 1, 2, 3 -> rang = 'D';
+            default -> rang = 'F';
+        }
+        return "Your total marks is " + sum + " you average is " + average + " your rating " + rang + "!";
     }
 }

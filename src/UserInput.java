@@ -8,14 +8,19 @@ public class UserInput {
     }
 
     public int numberOfSubjects(){
-        System.out.print(("Enter number of subject: -> "));
         int number = 0;
-        if (scanner.hasNextInt()) {
-            number = scanner.nextInt();
-        } else {
-            System.out.println("Enter the incorrect number. Please tre again");
-            scanner.next();
-        }
+        while(true) {
+            System.out.print(("Enter number of subject: -> "));
+            if (scanner.hasNextInt()) {
+                number = scanner.nextInt();
+                if (number > 0) break;
+                System.out.print("The number you entered is not within the range. ");
+
+            } else {
+                System.out.println("Enter the incorrect number. Please tre again");
+                scanner.next();
+            }
+       }
         return number;
     }
 
@@ -26,7 +31,8 @@ public int setMark() {
     while (true) {
         if (scanner.hasNextInt()) {
             mark = scanner.nextInt();
-            break;
+            if (mark > 0 && mark <= 100) break;
+            System.out.print("The number you entered is not within the range. Please tre again: -> ");
         } else {
             System.out.print("Enter the invalid mark. Please try again");
             scanner.next();
